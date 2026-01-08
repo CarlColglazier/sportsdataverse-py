@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [tool.black]
 line-length = 120
 py38 = true
@@ -31,3 +35,4 @@ profile = 'black'
 [tool.zimports]
 black-line-length = 120
 keep-unused-type-checking = true
+
