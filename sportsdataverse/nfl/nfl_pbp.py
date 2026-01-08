@@ -8,7 +8,7 @@ from functools import reduce
 import numpy as np
 import pandas as pd
 import polars as pl
-from pkg_resources import resource_filename
+from importlib.resources import files
 from xgboost import Booster, DMatrix
 
 from sportsdataverse.dl_utils import download
@@ -43,9 +43,9 @@ from sportsdataverse.nfl.model_vars import (
 # "safety" : float(p[4]),
 # "opp_safety" : float(p[5]),
 # "no_score" : float(p[6])
-ep_model_file = resource_filename("sportsdataverse", "nfl/models/ep_model.model")
-wp_spread_file = resource_filename("sportsdataverse", "nfl/models/wp_spread.model")
-qbr_model_file = resource_filename("sportsdataverse", "nfl/models/qbr_model.model")
+ep_model_file = str(files("sportsdataverse").joinpath("cfb/models/ep_model.model"))
+wp_spread_file = str(files("sportsdataverse").joinpath("cfb/models/wp_spread.model"))
+qbr_model_file = str(files("sportsdataverse").joinpath("cfb/models/qbr_model.model"))
 
 ep_model = Booster({"nthread": 4})  # init model
 ep_model.load_model(ep_model_file)
